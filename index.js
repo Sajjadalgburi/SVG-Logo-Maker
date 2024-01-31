@@ -1,4 +1,6 @@
 const inquirer = require("inquirer");
+const fs = require("fs");
+const generatedLogoContent = require("./util/generatedLogoContent.js");
 
 const listOptions = ["Circle", "Triangle", "Square"];
 
@@ -6,7 +8,7 @@ inquirer
   .prompt([
     {
       type: "list",
-      name: "shapeList",
+      name: "shape",
       message: "Choose a shape",
       choices: listOptions,
     },
@@ -37,8 +39,9 @@ inquirer
       },
     },
   ])
-  .then(() => {
-    fs.writeFile("logo.svg", "NOTHING", (err) => {
+  .then((answers) => {
+    const LogoContent = generatedLogoContent(answers);
+    fs.writeFile("logo.svg", LogoContent, (err) => {
       err ? console.error(err) : console.log("Generated logo.svg");
     });
   });
