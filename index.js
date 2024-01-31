@@ -14,6 +14,19 @@ inquirer
     },
     {
       type: "input",
+      name: "shapeColor",
+      message: "Choose a shape color (or type a hexadecimal number)",
+      validate: function (input) {
+        if (/[^a-zA-Z0-9#\s]/.test(input)) {
+          return "Invalid color input...";
+        } else if (input.trim() !== "") {
+          return true;
+        }
+        return "Please enter a text...";
+      },
+    },
+    {
+      type: "input",
       name: "textContent",
       message: "Enter text content for your shape!",
       validate: function (input) {
@@ -28,7 +41,7 @@ inquirer
     {
       type: "input",
       name: "textColor",
-      message: "Enter a color keyword (OR a hexadecimal number)",
+      message: "Choose a text color (or type a hexadecimal number)",
       validate: function (input) {
         if (/[^a-zA-Z0-9#\s]/.test(input)) {
           return "Invalid color input...";
