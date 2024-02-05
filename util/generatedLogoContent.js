@@ -1,4 +1,4 @@
-const { Shape, Circle, Triangle, Square } = require("../lib/shapes.js");
+const { Circle, Triangle, Square } = require("../lib/shapes.js");
 
 function generatedLogoContent({ shape, shapeColor, textContent, textColor }) {
   if (shape === "Circle") {
